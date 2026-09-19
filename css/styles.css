@@ -1,0 +1,182 @@
+/* ============ TOKENS ============ */
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#FFF9F0;        /* warm milk */
+  --card:#FFFFFF;
+  --ink:#3A2E39;          /* dark plum ink — cartoon outline color */
+  --ink-soft:#6E5E6D;
+  --berry:#E85D9E;        /* Teenieping candy pink */
+  --grape:#7C5CE0;
+  --mint:#1F9E7E;
+  --tangerine:#E8770A;    /* Loud House orange */
+  --sky:#3E7FD6;
+  --sun:#F5B301;
+  --good-bg:#E4F6EC; --good-ink:#136B43;
+  --soft-bg:#FDF0E4; --soft-ink:#8A4B12;
+  --bubble:#F6F1FA;
+  --shadow:#3A2E39;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#221A28; --card:#322639; --ink:#F5EDF4; --ink-soft:#C9BCC8;
+    --bubble:#3C2F45; --shadow:#120C16;
+    --good-bg:#1E3D2E; --good-ink:#9FE0BD;
+    --soft-bg:#463420; --soft-ink:#F3CFA0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#221A28; --card:#322639; --ink:#F5EDF4; --ink-soft:#C9BCC8;
+  --bubble:#3C2F45; --shadow:#120C16;
+  --good-bg:#1E3D2E; --good-ink:#9FE0BD;
+  --soft-bg:#463420; --soft-ink:#F3CFA0;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+html,body{height:100%;}
+*,*::before,*::after{box-sizing:inherit;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:700; font-size:18px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Fredoka','Nunito',sans-serif; letter-spacing:.2px;}
+
+/* ============ LAYOUT ============ */
+.wrap{max-width:640px; margin:0 auto; padding:16px 16px 56px;}
+.screen{display:none;}
+.screen.on{display:block; animation:pop-in .28s ease-out;}
+@keyframes pop-in{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important;}
+}
+
+/* ============ STICKER CARDS (the signature look: cel outline + hard offset shadow) ============ */
+.sticker{
+  background:var(--card); border:3px solid var(--ink); border-radius:22px;
+  box-shadow:5px 6px 0 var(--shadow); padding:18px;
+}
+.tap{
+  display:block; width:100%; text-align:left; cursor:pointer;
+  font:inherit; color:inherit;
+  background:var(--card); border:3px solid var(--ink); border-radius:20px;
+  box-shadow:4px 5px 0 var(--shadow); padding:16px 18px;
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.tap:active{transform:translate(3px,4px); box-shadow:1px 1px 0 var(--shadow);}
+.tap:focus-visible,.btn:focus-visible{outline:4px solid var(--sky); outline-offset:3px;}
+.btn{
+  display:inline-block; cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:600;
+  font-size:20px; color:#fff; background:var(--grape);
+  border:3px solid var(--ink); border-radius:999px; padding:12px 26px;
+  box-shadow:4px 5px 0 var(--shadow);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.btn:active{transform:translate(3px,4px); box-shadow:1px 1px 0 var(--shadow);}
+.btn.secondary{background:var(--card); color:var(--ink); font-weight:600;}
+.btn:disabled{opacity:.45; cursor:default;}
+
+/* world accent classes */
+.c-berry{--accent:var(--berry);} .c-grape{--accent:var(--grape);}
+.c-mint{--accent:var(--mint);} .c-tangerine{--accent:var(--tangerine);}
+.c-sky{--accent:var(--sky);}
+
+/* ============ HOME / MAP ============ */
+.hero{ text-align:center; padding:26px 10px 18px;}
+.hero h1{font-size:clamp(30px,7vw,40px); margin:0 0 6px;}
+.hero .sub{color:var(--ink-soft); font-size:17px; margin:0;}
+.hero .medal{font-size:52px; line-height:1; display:block; margin-bottom:6px;}
+.map{display:grid; gap:14px; margin-top:10px;}
+.world-card{display:flex; align-items:center; gap:14px;}
+.world-card .icon{
+  flex:0 0 64px; width:64px; height:64px; border-radius:18px;
+  display:grid; place-items:center; font-size:34px;
+  background:var(--accent); border:3px solid var(--ink);
+}
+.world-card h2{margin:0; font-size:21px;}
+.world-card .who{margin:2px 0 0; color:var(--ink-soft); font-size:15px;}
+.world-card .stars{margin-left:auto; font-size:18px; white-space:nowrap;}
+.grownup{margin-top:22px; text-align:center;}
+.grownup button{background:none; border:none; color:var(--ink-soft); font:inherit; font-size:15px; text-decoration:underline; cursor:pointer;}
+
+/* ============ LESSON / QUIZ SHARED ============ */
+.topbar{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+.topbar .back{
+  flex:0 0 auto; width:46px; height:46px; border-radius:14px; font-size:22px;
+  display:grid; place-items:center; cursor:pointer; color:var(--ink);
+  background:var(--card); border:3px solid var(--ink); box-shadow:3px 4px 0 var(--shadow);
+}
+.topbar .title{font-family:'Fredoka'; font-size:20px; font-weight:600;}
+.steps{display:flex; gap:6px; margin-left:auto;}
+.steps i{width:12px; height:12px; border-radius:50%; border:2.5px solid var(--ink); background:var(--card);}
+.steps i.done{background:var(--accent);}
+.steps i.now{background:var(--sun);}
+
+/* speech row */
+.say{display:flex; gap:12px; align-items:flex-start; margin:14px 0;}
+.avatar{
+  flex:0 0 58px; width:58px; height:58px; border-radius:50%;
+  display:grid; place-items:center; font-size:30px;
+  background:var(--accent,#ddd); border:3px solid var(--ink);
+}
+.bubble{
+  position:relative; background:var(--bubble); border:3px solid var(--ink);
+  border-radius:18px; padding:12px 16px; flex:1;
+}
+.bubble::before{
+  content:""; position:absolute; left:-13px; top:20px;
+  border:8px solid transparent; border-right-color:var(--ink);
+}
+.bubble::after{
+  content:""; position:absolute; left:-8px; top:22px;
+  border:6px solid transparent; border-right-color:var(--bubble);
+}
+.bubble .name{display:block; font-family:'Fredoka'; font-weight:600; color:var(--accent); font-size:15px; margin-bottom:2px;}
+.bubble p{margin:0 0 8px;} .bubble p:last-child{margin-bottom:0;}
+.bubble strong{color:var(--accent);}
+
+.visual{display:flex; justify-content:center; padding:14px 6px; overflow-x:auto;}
+.visual svg{max-width:100%; height:auto;}
+
+.lesson-nav{display:flex; justify-content:space-between; gap:10px; margin-top:18px;}
+
+/* quiz */
+.q-card h3{margin:0 0 10px; font-size:21px; line-height:1.4;}
+.answers{display:grid; gap:12px; margin-top:14px;}
+.tap.answer{font-size:19px;}
+.tap.answer .big{font-size:26px; font-family:'Fredoka'; font-weight:600;}
+.tap.answer.right{background:var(--good-bg); border-color:var(--good-ink); color:var(--good-ink);}
+.tap.answer.wrong{background:var(--soft-bg); border-color:var(--soft-ink); color:var(--soft-ink);}
+.feedback{margin-top:14px; border-radius:18px; border:3px solid; padding:14px 16px; display:none;}
+.feedback.show{display:block; animation:pop-in .25s ease-out;}
+.feedback.good{background:var(--good-bg); border-color:var(--good-ink); color:var(--good-ink);}
+.feedback.soft{background:var(--soft-bg); border-color:var(--soft-ink); color:var(--soft-ink);}
+.feedback .fb-head{font-family:'Fredoka'; font-size:20px; font-weight:600; margin:0 0 4px;}
+.feedback p{margin:0;}
+.after{display:none; margin-top:14px; text-align:right;}
+.after.show{display:block;}
+
+/* finish */
+.finish{text-align:center; padding:30px 16px;}
+.finish .burst{font-size:64px; display:block; margin-bottom:8px;}
+.finish h2{font-size:30px; margin:0 0 6px;}
+.finish .starline{font-size:40px; letter-spacing:6px; margin:10px 0;}
+.finish p{color:var(--ink-soft); margin:0 0 20px;}
+
+/* name gate */
+.gate{max-width:440px; margin:8vh auto 0; text-align:center;}
+.gate input{
+  width:100%; font:inherit; font-size:20px; text-align:center; color:var(--ink);
+  background:var(--card); border:3px solid var(--ink); border-radius:16px;
+  padding:12px; margin:14px 0 16px;
+}
+.gate input:focus-visible{outline:4px solid var(--sky); outline-offset:2px;}
+
+/* grown-ups panel */
+.grown-panel{margin-top:16px;}
+.grown-panel h2{margin-top:0;}
+.grown-panel ul{padding-left:20px; margin:8px 0;}
+.grown-panel li{margin:8px 0; font-weight:600;}
+small.note{color:var(--ink-soft); font-weight:600;}
