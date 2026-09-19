@@ -180,3 +180,84 @@ h1,h2,h3,.display{font-family:'Fredoka','Nunito',sans-serif; letter-spacing:.2px
 .grown-panel ul{padding-left:20px; margin:8px 0;}
 .grown-panel li{margin:8px 0; font-weight:600;}
 small.note{color:var(--ink-soft); font-weight:600;}
+
+/* ============ MONEY WORLD ACCENT ============ */
+:root{ --gold:#B87A0A; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --gold:#F0B63C; } }
+:root[data-theme="dark"]{ --gold:#F0B63C; }
+.c-sun{--accent:var(--gold);}
+
+/* stacked visuals (two fraction bars above each other) */
+.visual.stack{flex-direction:column; align-items:center; gap:10px;}
+
+/* ============ READ-ALOUD BUTTON ============ */
+.speak{
+  display:block; margin:12px auto 0; cursor:pointer;
+  font:inherit; font-size:16px; font-weight:700; color:var(--ink-soft);
+  background:var(--bubble); border:2.5px dashed var(--ink-soft);
+  border-radius:999px; padding:7px 18px;
+}
+.speak:hover{color:var(--ink); border-color:var(--ink);}
+.speak:focus-visible{outline:4px solid var(--sky); outline-offset:3px;}
+
+/* practice-round banner */
+.review-note{
+  margin:0 0 14px; padding:10px 16px; font-size:16px;
+  background:var(--bubble); border:3px solid var(--ink); border-radius:16px;
+}
+
+/* ============ GROWN-UP TABS + PROGRESS REPORT ============ */
+.gtabs{display:flex; gap:10px; margin-bottom:14px;}
+.gtab{
+  flex:1; cursor:pointer; font:inherit; font-size:17px; color:var(--ink);
+  font-family:'Fredoka',sans-serif; font-weight:600;
+  background:var(--card); border:3px solid var(--ink); border-radius:16px;
+  box-shadow:3px 4px 0 var(--shadow); padding:10px 8px;
+}
+.gtab.on{background:var(--grape); color:#fff;}
+.gtab:focus-visible{outline:4px solid var(--sky); outline-offset:3px;}
+
+.grown-panel + .grown-panel{margin-top:16px;}
+.grown-panel code{background:var(--bubble); padding:1px 6px; border-radius:6px; font-size:15px;}
+
+.kpis{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+.kpi{
+  background:var(--bubble); border:2.5px solid var(--ink); border-radius:16px;
+  padding:12px 14px; text-align:center;
+}
+.kpi b{display:block; font-family:'Fredoka',sans-serif; font-size:26px; line-height:1.15;}
+.kpi span{display:block; font-size:14px; color:var(--ink-soft);}
+
+.wrow{padding:14px 0; border-bottom:2px dashed var(--bubble);}
+.wrow:last-of-type{border-bottom:none;}
+.wrow-head{display:flex; align-items:center; gap:10px; font-size:18px;}
+.wrow-emoji{font-size:24px;}
+.wrow-stars{margin-left:auto; white-space:nowrap; font-size:15px;}
+.wrow .bar{
+  height:16px; margin:8px 0; background:var(--bubble);
+  border:2.5px solid var(--ink); border-radius:999px; overflow:hidden;
+}
+.wrow .bar i{display:block; height:100%;}
+.wrow-nums{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:15px; color:var(--ink-soft);}
+.wrow-nums b{color:var(--ink);}
+.wrow .none{margin:6px 0 0; font-size:15px; color:var(--ink-soft);}
+
+ul.tricky{list-style:none; padding:0; margin:10px 0 0;}
+ul.tricky li{
+  background:var(--bubble); border:2.5px solid var(--ink); border-radius:16px;
+  padding:12px 14px; margin:0 0 10px; font-size:16px; font-weight:600;
+}
+.tag{
+  display:inline-block; font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px;
+  background:var(--card); border:2px solid var(--ink); border-radius:999px;
+  padding:1px 10px; margin-bottom:4px;
+}
+
+.setting{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  background:var(--bubble); border:2.5px solid var(--ink); border-radius:16px;
+  padding:12px 14px; margin:10px 0;
+}
+.setting > span{flex:1 1 200px;}
+.setting .btn{font-size:17px; padding:8px 20px;}
+.btn.danger{color:var(--soft-ink); border-color:var(--soft-ink);}

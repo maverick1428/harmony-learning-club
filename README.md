@@ -1,8 +1,11 @@
 # Harmony Learning Club
 
-A learning website with five worlds (fractions, area & volume, clocks, reading,
-feelings & perspective-taking), taught by friendly characters with a Minecraft twist.
-Built for one very cool 11-year-old. 🌟
+A learning website with six worlds (fractions, area & volume, clocks, reading,
+feelings & perspective-taking, and money), taught by friendly characters with a
+Minecraft twist. Built for one very cool 11-year-old. 🌟
+
+Each world is the same calm routine: **Learn pages → Practice questions → Stars**.
+Wrong answers never cost anything — they show a hint and let him try again.
 
 ## Try it locally
 Just double-click `index.html` — it opens in your browser. No install, no build step.
@@ -27,11 +30,26 @@ branch" → Branch: main, folder: / (root) → Save. Your site appears at
    - "Add four harder questions to the Fraction Bakery about equivalent fractions."
    - "Add a new Story Clubhouse story about a Minecraft mining trip, with 4 questions."
    - "The clock questions are too hard — make questions 4 and 6 one step easier."
-   - "Add a sixth world about money math hosted by Joyping."
+   - "Add a seventh world about multiplication hosted by Lisa."
 3. Claude Code reads `CLAUDE.md` for the rules, edits `js/content.js`, and runs
    `node scripts/validate.js` to check its own work.
 4. Preview by opening `index.html`, then tell Claude Code: "looks good, commit and push."
    The live site updates itself within a minute.
+
+## For grown-ups: the Progress page
+Tap **For grown-ups** at the bottom of the map, then the **Progress** tab. It shows,
+per world: stars, the share of questions he got right on the *first* try, how many
+times he finished it, average time per run and per question, and when he last played.
+Below that is the most useful list on the site — **the exact questions that needed a
+hint**, ranked by how often — which tells you what to talk through together away from
+the screen. Nothing is uploaded; it is all read back out of this browser's own storage.
+
+Two other things live there: an **On/Off switch for the "Read this to me" button**
+(browser speech, on by default), and **Clear all progress** (tap twice to confirm).
+
+After finishing a world he also gets a **"Practice the tricky ones"** button that
+replays only the questions he needed a hint on. That round never changes his stars,
+so going back is always safe.
 
 ## Good to know
 - Progress (his name + stars) saves in the browser on each device — it won't carry
